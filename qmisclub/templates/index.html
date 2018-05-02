@@ -1,0 +1,137 @@
+{% extends "base.html"%} {% block content %} {% load staticfiles %}{% load social_widgets %}
+<title>
+  {%block title%} QMIS Club {%endblock%}
+</title>
+<style>
+  .carousel .item img {
+    height: 525px;
+  }
+</style>
+
+
+<div class="container">
+
+  <div class="row">
+    <div class="box">
+      <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center">
+          <h2 class="brand-before">
+                    <small>Welcome to</small>
+                </h2>
+          <h1 class="brand-name">QMIS Club</h1>
+          <hr class="tagline-divider">
+          <h2>
+                    <small>
+
+                        <strong>{% for word in welcoming_word %} {{word.welcoming_word}} {%endfor%}</strong>
+
+                    </small>
+                </h2>
+        </div>
+        <div class="col-md-12">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="https://www.youtube.com/embed/{% for video in home_page_video %}{{video.video_id}}{% endfor %}?controls=2&rel=0" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="box">
+      <div class="col-md-12 text-center">
+        <hr>
+        <h2 class="intro-text text-center">
+              <strong>Twitter</strong> Timeline & <strong>Instagram</strong> Images
+          </h2>
+        <hr>
+        <div class="col-md-6">
+          <a class="twitter-timeline" data-dnt="true" data-width="100%" data-height="525" href="https://twitter.com/QMISCLUB_KU">Tweets by QMISCLUB_KU</a>
+        </div>
+        <div id="carousel-example-generic" class="carousel slide col-md-6">
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <ol class="carousel-indicators hidden-xs">
+
+              {% for image in instagram %}{% if forloop.counter == 1 %}
+              <li data-target="#carousel-example-generic" data-slide-to="{{forloop.counter}}" class="active"></li>
+              {% else %}
+              <li data-target="#carousel-example-generic" data-slide-to="{{forloop.counter}}"></li>
+              {% endif %}{% endfor %}
+            </ol>
+            {% for image in instagram %} {% if forloop.counter == 1 %}
+            <div class="item active">
+              {% else %}
+              <div class="item">
+                {% endif %}
+                <img class="img-responsive img-full" src="{{image.images.standard_resolution.url}}" alt="">
+              </div>
+              {% endfor %}
+
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="icon-prev"></span>
+                        </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="icon-next"></span>
+                        </a>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="box">
+      <div class="text-center">
+        <hr>
+        <h2 class="intro-text text-center">
+                  <strong>Events</strong> Calendar & <strong>Quick</strong> Links
+              </h2>
+        <hr>
+        <div class="row">
+          <div class="col-sm-6">
+
+            <iframe src="https://calendar.google.com/calendar/embed?showTabs=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=muqqt5tqtbghbkkgm3rff01ha4%40group.calendar.google.com&amp;color=%23691426&amp;ctz=Asia%2FRiyadh" style="border-width:0" width="100%"
+              height="330" frameborder="0" scrolling="no"></iframe>
+          </div>
+
+          <div class="col-sm-6">
+            <ul class="list-group" style="border: 3px solid red;color:black;">
+              <li class="list-group-item"><a href="http://kuweb.ku.edu.kw/kulib/index.htm" target="_blank" style="color:black;">KU Library Administration</a></li>
+              <li class="list-group-item"><a href="http://portal.ku.edu.kw/" target="_blank" style="color:black;">Portal</a></li>
+              <li class="list-group-item"><a href="http://kuweb.ku.edu.kw/ku/index.htm" target="_blank" style="color:black;">KU Main Website</a></li>
+              <li class="list-group-item"><a href="http://www.kuniv.edu/COGS/index.htm" target="_blank" style="color:black;">KU Collage of Graduate Studies Website</a></li>
+              <li class="list-group-item"><a href="http://kuweb.ku.edu.kw/COBA/index.htm" target="_blank" style="color:black;">CBA Main Website</a></li>
+              <li class="list-group-item"><a href="https://bb.ku.edu.kw" target="_blank" style="color:black;">BlackBoard</a></li>
+              <li class="list-group-item"><a href="http://www.wix.com" target="_blank" style="color:black;">Wix</a></li>
+              <li class="list-group-item"><a href="http://is.cba.edu.kw" target="_blank" style="color:black;">IS Website</a></li>
+            </ul>
+          </div>
+
+        </div>
+        <br>
+        <br> {% social_widget_render "twitter/follow_button.html" username="qmisclub_ku" show_screen_name=False show_count=False size="large" dnt=False %}
+        <a class="twitter-share-button" href="https://twitter.com/share" data-text="Check out this website!!" data-size="large" data-via="qmisclub_ku" data-hashtags="KUNIV,CBA">Tweet</a>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+
+
+{%endblock%} {%block jquery%}
+
+<script>
+  $('.carousel').carousel({
+    interval: 5000 //changes the speed
+  });
+</script>
+{%endblock%}

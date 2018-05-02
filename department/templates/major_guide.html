@@ -1,0 +1,103 @@
+{% extends 'base.html' %} {% block content %}
+<title>
+  {% block title %} Major Guide {% endblock %}
+</title>
+{% load staticfiles %}
+<!--
+<style>
+  .list-inline>li {
+    display: inline-block;
+    padding-right: 48px;
+    padding-left: 55px;
+  }
+</style>
+-->
+<div class="container">
+  <div class="row">
+    <div class="box">
+      <div class="col-sm-12">
+        <hr>
+        <h2 class="intro-text text-center">Major
+              <strong>Guide</strong>
+          </h2>
+        <hr>
+      </div>
+      <div class="col-sm-12 text-center">
+        <div class="col-sm-6 float-right">
+          {% if oscm_doc %}
+          <a class="fa-stack fa-5x" style="color: #c52d2f" href="{{oscm_doc.document.url}}" download target="_blank">
+                  {% else %}
+                    <a class="fa-stack fa-5x" style="color: #c52d2f" href="#" >
+                  {% endif %}
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-bar-chart fa-stack-1x fa-inverse"></i>
+                    </a>
+
+          <h2 class="intro-text text-center">
+                      {% if oscm_doc %}
+              <strong><a href="{{oscm_doc.document.url}}" download target="_blank" style="color:black">OSCM</a></strong>
+                      {% else %}
+                      <strong><a href="#"  style="color:black">OSCM</a></strong> {% endif %}
+          </h2>
+        </div>
+
+        <div class="col-sm-6 float-left">
+          {% if mis_doc %}
+          <a class="fa-stack fa-5x" style="color: #c52d2f" href="{{mis_doc.document.url}}" download target="_blank">
+                      {% else %}
+                      <a class="fa-stack fa-5x" style="color: #c52d2f" href="#" >
+                      {% endif %}
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-desktop fa-stack-1x fa-inverse"></i>
+                    </a>
+
+          <h2 class="intro-text text-center">
+            {% if mis_doc %}
+              <strong><a href="{{mis_doc.document.url}}" download target="_blank" style="color:black">MIS</a></strong>
+              {% else %}
+              <strong><a href="#" style="color:black">MIS</a></strong>
+              {% endif %}
+          </h2>
+        </div>
+      </div>
+      <div class="col-sm-12 text-center">
+      <div class="col-sm-6 float-right">
+        {% if other_courses_doc %}
+        <a class="fa-stack fa-5x" style="color: #c52d2f" href="{{other_courses_doc.document.url}}" download target="_blank">
+          {% else %}
+          <a class="fa-stack fa-5x" style="color: #c52d2f" href="#" >
+          {% endif %}
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+            </a>
+        <h2 class="intro-text text-center">
+          {% if other_courses_doc %}
+      <strong><a href="{{other_courses_doc.document.url}}" download target="_blank" style="color:black">CBA General Courses</a></strong>
+      {% else %}
+      <strong><a href="#" style="color:black">CBA General Courses</a></strong>
+      {% endif %}
+  </h2>
+</div>
+<div class="col-sm-6 float-left">
+  {% if placement_doc %}
+  <a class="fa-stack fa-5x" style="color: #c52d2f" href="{{placement_doc.document.url}}" download target="_blank">
+    {% else %}
+    <a class="fa-stack fa-5x" style="color: #c52d2f" href="#">
+    {% endif %}
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-graduation-cap fa-stack-1x fa-inverse"></i>
+      </a>
+  <h2 class="intro-text text-center">
+    {% if placement_doc %}
+<strong><a href="{{placement_doc.document.url}}" download target="_blank" style="color:black">Student Placement</a></strong>
+{% else %}
+<strong><a href="#" style="color:black">Studnet Placement</a></strong>
+{% endif %}
+</h2>
+</div>
+    </div>
+    <div class='clearfix'></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

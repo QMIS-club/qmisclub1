@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% block content %}
+<title>
+    {% block title %} College Guide {% endblock %}
+</title>
+{% load staticfiles %}
+<style>
+.list-inline>li {
+    display: inline-block;
+    padding-right: 30px;
+    padding-left: 55px;
+}
+</style>
+<div class="container">
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12">
+                <hr>
+                <h2 class="intro-text text-center">College
+              <strong>Guide</strong>
+          </h2>
+                <hr>
+            </div>
+            <ul class="col-lg-12 list-inline text-center">
+                <li class="text-center">
+                    <a class="fa-stack fa-5x" style="color: red" href="{% url 'major_guide'%}">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-graduation-cap fa-stack-1x fa-inverse"></i>
+                    </a>
+
+                    <h2 class="intro-text text-center">
+              <strong>Major Guide</strong>
+          </h2>
+                </li>
+
+                <li class="text-center">
+                    <a class="fa-stack fa-5x" style="color: red" href="{% url 'faculty_members'%}">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-users fa-stack-1x fa-inverse"></i>
+                    </a>
+
+                    <h2 class="intro-text text-center">
+              <strong>Faculty Members</strong>
+          </h2>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

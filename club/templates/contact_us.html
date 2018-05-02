@@ -1,0 +1,83 @@
+{% extends "base.html"%} {% block content %} {% load staticfiles %}
+<style>
+    p {
+        word-wrap: break-word;
+        padding-right: 5px
+    }
+</style>
+<title>
+    {%block title%} Contact Us {%endblock%}
+</title>
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+<link href="{% static 'css/business-casual.css' %}" rel="stylesheet">
+
+<section id="contact-info">
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                <div class="center">
+                    <hr>
+                    <h2 class="intro-text text-center">Contact
+                      <strong>Us</strong>
+                  </h2>
+                    <hr>
+
+                    <p class="lead">We’re Glad to Help!<br>
+Have any questions, suggestions or complaints? Feel free to share it with us at any time and we’ll reply to you as soon as possible.</p>
+                </div>
+                <div class="gmap-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-7 col-sm-7 col-xs-12 text-center">
+                                <div class="map-responsive">
+                                    <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3477.963195987444!2d47.91530914989208!3d29.34207435827723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fcf8ff6ba279b79%3A0x8534b858393cd536!2sCollege+of+Business+Administration!5e0!3m2!1sen!2skw!4v1486313169921"
+                                       allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 col-xs-12 map-content" style="margin-top: 5px">
+                                <ul class="row">
+                                    <li class="col-sm-12">
+                                        <address>
+                                <h4><b>QMIS Club</b></h4>
+                                <p>Twitter: @qmisclub_ku</p>
+                                <p>Email: qmisclub_ku@hotmail.com</p>
+                            </address>
+
+                                        <address>
+                                <h4><b>Developers</b></h4>
+                                <p>Email: <ul style="margin-left: 20px">
+                                            <li>
+                                            abdullatifalzaidan@gmail.com (Abdullatif Al-Zaidan, Project Manager)
+                                          </li>
+                                          <li>
+                                          yousefmon@gmail.com (Yousef Al-Ghanim, Programmer)
+                                        </li>
+                                        <li>
+                                          nsoulper@gmail.com (Mohammed Albarrak, Programmer)
+                                        </li>
+                                        </ul>
+                                          </p>
+                                <p>Email: qmiswebsiteteam@gmail.com</p>
+                            </address>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-sm-7 col-xs-12" style="padding-bottom: 10px">
+                  <div class="embed-responsive embed-responsive-16by9">
+                      <iframe   src="https://www.youtube.com/embed/{% for vid in video %}{{vid.video_id}}{% endfor %}?controls=2&rel=0" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                </div>
+                <div class="col-lg-5 col-sm-5 col-xs-12">
+                    <a class="twitter-timeline" data-dnt="true" data-width="100%" data-height="350" href="https://twitter.com/QMISCLUB_KU">Tweets by QMISCLUB_KU</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+{% block jquery %}<script id="twitter-wjs" type="text/javascript" async defer src="//platform.twitter.com/widgets.js"></script>{% endblock %}
+ {%endblock%}

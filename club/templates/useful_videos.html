@@ -1,0 +1,54 @@
+{% extends "base.html"%} {% block content %}
+<title>
+    {%block title%} Useful Videos {%endblock%}
+</title>
+{% load staticfiles %}
+<link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+<link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+<link href="{% static 'css/business-casual.css' %}" rel="stylesheet">
+
+<section id="portfolio">
+    <div class="container">
+        <div class="box">
+            <hr>
+            <h2 class="intro-text text-center">Useful
+            <strong>Videos</strong>
+        </h2>
+            <hr>
+
+            <ul class="portfolio-filter text-center" style="padding-bottom:10px">
+                <li style="padding-bottom:10px"><a class="btn btn-default active" href="#" data-filter="*">All</a></li>
+                {% for category in categories %} {% for key, value in category.items %} {% if value%}
+                <li style="padding-bottom:10px"><a class="btn btn-default" href="#" data-filter=".{{value|cut:" "|cut:"."|cut:":"|cut:","}}">{{value}}</a></li>
+
+                {% endif %}{% endfor %}{% endfor %}
+            </ul>
+            <!--/#portfolio-filter-->
+
+            <div class="row">
+                <div class="portfolio-items">
+                    {% for video in videos %}
+                    <div class="portfolio-item {{video.category|cut:" "|cut:"."|cut:":"|cut:","}} apps col-xs-12 col-sm-6 col-md-6" style="padding-bottom: 10px">
+                      <div class="embed-responsive embed-responsive-16by9">
+                        <iframe src="https://www.youtube.com/embed/{{video.video_id}}?controls=2&rel=0" frameborder="0" allowfullscreen></iframe>
+                      </div>
+                    </div>
+                    {% endfor %}
+                    <!--/.portfolio-item-->
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+      </div>
+</section>
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+{%endblock%}
+{% block jquery %}
+<script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+<script src="{% static 'js/jquery.isotope.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+{%endblock%}

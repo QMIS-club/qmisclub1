@@ -1,0 +1,61 @@
+{% extends "base.html"%} {% block content %} {% load staticfiles%}
+<title>
+    {%block title%} {{member.name}} {%endblock%}
+</title>
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-12">
+            <div class="box">
+                <hr>
+                <h1 class="intro-text text-center">{% if member.title %}<strong>{{member.title}}</strong> {% endif %}{{member.name}}
+
+              </h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="box">
+                <div class="col-sm-4 text-center">
+                    {% if member.picture %}
+                    <img class="img-circle img-responsive" src="{{member.picture.url}}" alt="" height="450" width="750"> {% else %}
+                    <img class="img-circle img-responsive" src="{% static 'img/default-profile-picture.png'%}" alt="" height="450" width="750"> {% endif %}
+                </div>
+                <div class="col-sm-8 text-left">
+                    <br>
+                    <br>
+                    <br>
+                    <br> {% if member.email %}
+                    <p><i class="fa fa-envelope-o" aria-hidden="true"></i> {{member.email}}</p>
+                    {% endif %}{% if member.website %}
+                    <p><i class="fa fa-globe" aria-hidden="true"></i><a href="{{member.website}}" target="_blank"> {{member.website}}</a></p>
+                    {% endif %}{% if member.twitter_account %}
+                    <p><i class="fa fa-twitter" aria-hidden="true" style="color:#1da1f2"></i><a href="https://twitter.com/{{member.twitter_account}}"> {{member.twitter_account}}</a></p>
+                    {% endif %}
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Days</th>
+                                <th>Time</th>
+                                <th>Semester</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for office_hour in office_hours %}
+                            <tr>
+                                <th scope="row">{{office_hour.days}}</th>
+                                <td>{{office_hour.time}}</td>
+                                <td>{{office_hour.semester}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

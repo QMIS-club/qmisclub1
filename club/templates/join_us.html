@@ -1,0 +1,92 @@
+{% extends "base.html" %} {% block content %} {% load staticfiles %}
+<link href="{% static 'css/join_us.css' %}" rel="stylesheet">
+<title>
+    {%block title%} Join Us {%endblock%}
+</title>
+<div class="container">
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12 text-center">
+                <div class="text-center">
+                    <hr>
+                    <h2 class="intro-text text-center">Join
+                <strong>Application</strong>
+            </h2>
+                    <hr>
+                    <form action="{% url 'join_us' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                            <label for="text" class="col-sm-4 col-form-label text-right">{{form.name.label}}: </label>
+                            <div class="col-sm-4">
+                                <input type="text" name="name" id="id_name" class="form-control" placeholder="Please enter your name" style="margin-bottom:5px" required />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label text-right">{{form.major.label}}:</label>
+                            <div class="col-sm-4  selectContainer">
+                                <select class="form-control" name="major" id="id_major">
+                              <option value="">Choose your major</option>
+                                      <option value="Accounting">Accounting</option>
+                                      <option value="Economics">Economics</option>
+                                      <option value="Finance">Finance</option>
+                                      <option value="Management">Management</option>
+                                      <option value="Management Information System">Management Information System</option>
+                                      <option value="Marketing">Marketing</option>
+                                      <option value="Operation & Supply Chain Management">Operation & Supply Chain Management</option>
+                                      <option value="Public Administration">Public Administration</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="text" class="col-sm-4 col-form-label text-right">{{form.gpa.label}}: </label>
+                            <div class="col-sm-4">
+                                <input type="text" name="gpa" id="id_gpa" class="form-control" placeholder="Please enter your GPA" style="margin-bottom:5px" required />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="text" class="col-sm-4 col-form-label text-right">{{form.mgpa.label}}: </label>
+                            <div class="col-sm-4">
+                                <input type="text" name="mgpa" id="id_mgpa" class="form-control" placeholder="Please enter your Major GPA" style="margin-bottom:5px" required />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="text" class="col-sm-4 col-form-label text-right">{{form.passed_credit.label}}: </label>
+                            <div class="col-sm-4">
+                                <input type="text" name="passed_credit" id="id_passed_credit" class="form-control" placeholder="Please enter your Passed Credit" style="margin-bottom:5px" required />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="text" class="col-sm-4 col-form-label text-right">{{form.graduation_course.label}}: </label>
+                            <div class="col-sm-4">
+                                <input type="text" name="graduation_course" id="id_graduation_course" class="form-control" placeholder="Spring 2018" style="margin-bottom:5px" required />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="text" class="col-sm-4 col-form-label text-right">{{form.phone_number.label}}: </label>
+                            <div class="col-sm-4">
+                                <input type="text" name="phone_number" id="id_phone_number" class="form-control" placeholder="Please enter your phone number" style="margin-bottom:5px" required />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="text" class="col-sm-4 col-form-label text-right">{{form.email.label}}: </label>
+                            <div class="col-sm-4">
+                                <input type="text" name="email" id="id_email" class="form-control" placeholder="Please enter your email" style="margin-bottom:5px" required />
+                            </div>
+                        </div>
+                        <div class="row"></div>
+                        {% if form.errors %}
+                        <div class="alert alert-error">
+                            <button type="button" class="close" data-dismiss="alert">×</button> {% for field in form %} {% if field.errors %}
+                            <li>{{ field.label }}: {{ field.errors|striptags }}</li>
+                            {% endif %} {% endfor %}
+                        </div>
+                        {% endif %}
+                        <input class="btn btn-danger btn-danger" type="submit" value="Submit">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block jquery %} {% endblock %}

@@ -1,0 +1,19 @@
+.back-to-top {
+    background: none;
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 70px;
+    height: 100px;
+    z-index: 100;
+    display: none;
+    text-decoration: none;
+    color: #c52d2f;
+    background-color: transparent;
+    font-size: 12px;
+}
+
+.back-to-top i {
+    font-size: 60px;
+}

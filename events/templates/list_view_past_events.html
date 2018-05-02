@@ -1,0 +1,54 @@
+{%extends 'base.html'%}{%block content%}
+<title>
+    {%block title%} Past Events {%endblock%}
+</title>
+{% load staticfiles %}
+<div class="container">
+    <div class="row">
+        {% for event in events %}{% if forloop.counter == 1 %}
+        <div class="box">
+          <hr>
+          <h2 class="intro-text text-center">Past events</h2>
+          <hr>
+            <div class="col-md-7">
+                <a href="{% url 'view_event' event.pk %}">
+                    {% if event.poster %}
+                    <img class="img-responsive" src="{{event.poster.url}}" alt="" height="300" width="700">
+                    {% else %}
+                    <img class="img-responsive" src="{% static 'img/image_not_found.png'%}" alt="" height="300" width="700">
+                    {% endif %}
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h2 class="intro-text">{{event.name}}</h2>
+                <p style="-moz-hyphens:auto;-ms-hyphens:auto;-webkit-hyphens:auto;hyphens:auto;word-wrap:break-word;text-overflow: ellipsis;">{{event.event_description|truncatewords:20}}</p>
+                <a class="btn btn-danger" href="{% url 'view_event' event.pk %}">View event <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        {% else %}
+        <div class="box">
+            <div class="col-md-7">
+                <a href="{% url 'view_event' event.pk %}">
+                    {% if event.poster %}
+                    <img class="img-responsive" src="{{event.poster.url}}" alt="" height="300" width="700">
+                    {% else %}
+                    <img class="img-responsive" src="{% static 'img/image_not_found.png'%}" alt="" height="300" width="700">
+                    {% endif %}
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h2 class="intro-text">{{event.name}}</h2>
+                <p style="-moz-hyphens:auto;-ms-hyphens:auto;-webkit-hyphens:auto;hyphens:auto;word-wrap:break-word;text-overflow: ellipsis;">{{event.event_description|truncatewords:20}}</p>
+                <a class="btn btn-danger" href="{% url 'view_event' event.pk %}">View event <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+
+
+{%endblock%}

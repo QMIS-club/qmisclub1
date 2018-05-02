@@ -1,0 +1,60 @@
+{%extends 'base.html'%}{%block content%} {% load staticfiles %}{% load social_widgets %}
+<title>
+    {%block title%} Gallery {%endblock%}
+</title>
+<link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+<link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+<link href="{% static 'css/business-casual.css' %}" rel="stylesheet">
+
+
+<section id="portfolio">
+    <div class="container">
+      <div class="box">
+        <hr>
+        <h2 class="intro-text text-center">Gallery</h2>
+        <hr>
+
+
+        <ul class="portfolio-filter text-center">
+            <li style="padding-bottom:10px"><a class="btn btn-default active" href="#" data-filter="*">All</a></li>
+            {% for category in categories %}
+            {% for key, value in category.items %} {% if value%}
+            <li style="padding-bottom:10px"><a class="btn btn-default" href="#" data-filter=".{{value|cut:" "|cut:"."|cut:":"|cut:","}}">{{value}}</a></li>
+
+            {% endif %}{% endfor %}{% endfor %}
+        </ul>
+        <!--/#portfolio-filter-->
+
+        <div class="row">
+            <div class="portfolio-items">
+              {% for image in images %}
+
+                <div class="portfolio-item {{image.category|cut:" "|cut:"."|cut:":"|cut:","}} apps col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                      <a class="hidden-sm-down" href="{{image.image.url}}" rel="prettyPhoto">
+                        <img class="img-responsive-center" src="{{image.thumbnail.url}}" alt="" style="margin-bottom:10px">
+                        </a>
+                        <img class="hidden-md-up img-responsive-center" src="{{image.image.url}}" alt="" style="margin-bottom:10px">
+                            <div class="recent-work-inner">
+                            </div>
+                                </a>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#portfolio-items-->
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+{%endblock%}
+{% block jquery %}
+<script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+<script src="{% static 'js/jquery.isotope.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script id="twitter-wjs" type="text/javascript" async defer src="//platform.twitter.com/widgets.js"></script>
+{%endblock%}

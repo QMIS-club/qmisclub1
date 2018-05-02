@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block content %}{% load staticfiles %}
+<title>
+    {% block title %} Faculty Members {% endblock %}
+</title>
+<link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+<link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+<link href="{% static 'css/business-casual.css' %}" rel="stylesheet">
+<section id="portfolio">
+    <div class="container">
+        <div class="box">
+            <hr>
+            <h2 class="intro-text text-center">Faculty
+          <strong>Members</strong>
+      </h2>
+            <hr>
+            <ul class="portfolio-filter text-center">
+                <li style="padding-bottom:10px"><a class="btn btn-default active" href="#" data-filter="*">All</a></li>
+                {% for character in alpha %}
+                <li style="padding-bottom:10px"><a class="btn btn-default" href="#" data-filter=".{{character}}">{{character}}</a></li>
+                {% endfor %}
+            </ul>
+            <div class="row">
+                <div class="portfolio-items">
+                    {% for member in faculty_members %}
+                    <div class="portfolio-item {{member.name|slice:" 1 "|upper }} apps col-md-3 col-sm-6 hero-feature">
+                        <div class="thumbnail">
+                            {% if member.picture %}
+                            <a href={% url "faculty_member_profile" member.pk%}> <img class="img-responsive img-center" src="{{member.picture.url}}" alt="" height="450" width="750"></a> {% else %}
+                            <a href={% url "faculty_member_profile" member.pk%}><img class="img-responsive img-center" src="{% static 'img/default-profile-picture.png' %}" alt="" height="450" width="750"></a> {% endif %}
+                            <div class="caption">
+                                <a href={% url "faculty_member_profile" member.pk%} style="color:black"><h3>{% if member.title %}{{member.title}} {% endif %}{{member.name}}</h3></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:"4" and not forloop.first%}
+                    <div class="row"></div>
+                    {% endif %} {% endfor %}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> {%endblock%} {% block jquery %}
+<script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+<script src="{% static 'js/jquery.isotope.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+{%endblock%}
